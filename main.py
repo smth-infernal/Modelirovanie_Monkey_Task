@@ -41,6 +41,7 @@ for x in range(100):
         # если прошло больше 800 дней - программа останавливается
         if days/800 >= 1:
             cup_is_full = 'Да'
+            days_on_try += days
             break
         else:
             cup_is_full = 'Нет'
