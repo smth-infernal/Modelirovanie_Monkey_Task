@@ -1,4 +1,4 @@
-import json
+import csv
 import random
 
 # Создаем список из букв, которые будет нажимать обезьяна
@@ -6,7 +6,7 @@ letters = 'aбвгдеёжзийклмнопрстуфхцчшщыьъэюя'
 
 # Здесь гениальный код, вызывающий генерацию рандомного слова в цикле.
 # Попыток всего миллиард, чтобы было интереснее
-for x in range(100):
+for x in range(10):
     n = 1000000000
     attempt_count = 0  # Счетчик попыток
     successful_attempts = 0  # Номер попытки, которая была успешной
@@ -56,5 +56,18 @@ for x in range(100):
             }
     print(data)
 
-    with open(f'stat{x}.json', 'w', encoding='utf-8') as file:
-        json.dump(data, file, ensure_ascii=False, indent=4)
+    days_spend = 'Количество затраченных дней'
+    success = ' Успешная попытка №'
+    monkey_is_dead = ' Умерла ли обезьяна?'
+    cup = ' Наполнилась ли пиала?'
+
+    with open(f'stat.csv', 'a', encoding='utf-8') as file:
+        writer = csv.writer(file, delimiter=";")
+        writer.writerow(
+            (
+                days_on_try,
+                successful_attempts,
+                dead_monkey,
+                cup_is_full
+            )
+        )
